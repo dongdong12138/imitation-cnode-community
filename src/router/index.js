@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 
 import TheArticle from '@/components/TheArticle'
 import ThePostList from '@/components/ThePostList'
+import TheUserInfo from '@/components/TheUserInfo'
 
 Vue.use(VueRouter)
 
@@ -18,5 +19,10 @@ export default new VueRouter({
             path: '/article/:id',
             component: TheArticle
         },
+        {
+            name: 'userInfo',
+            path: '/userInfo/:name',
+            component: TheUserInfo
+        }
     ]
 })

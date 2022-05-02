@@ -22,11 +22,20 @@
         <div class="topbar">回复</div>
         <div v-for="(reply, index) in article.replies" :key="index" class="replySec">
           <div class="replyUp">
-            <a><img :src="reply.author.avatar_url" alt="avatar"></a>
-            <a><span>{{ reply.author.loginname }}</span></a>
-            <span>{{ index+1 }}楼</span>
+            <router-link :to="{
+              name: 'userInfo',
+              params: { name: reply.author.loginname }
+            }">
+              <img :src="reply.author.avatar_url" alt="avatar">
+            </router-link>
+            <router-link :to="{
+              name: 'userInfo',
+              params: { name: reply.author.loginname }
+            }">
+              <span>{{ reply.author.loginname }}</span>
+            </router-link>
+            <span>{{ index + 1 }}楼</span>
             <span v-if="reply.ups.length > 0">☝ {{ reply.ups.length }}</span>
-            <span></span>
           </div>
           <p v-html="reply.content"></p>
         </div>
@@ -81,25 +90,30 @@ export default {
 
 .topic_header {
   padding: 10px;
+
   > .topic_title {
     font-size: 20px;
     font-weight: bold;
     padding-top: 8px;
   }
+
   > ul {
     list-style: none;
     padding: 0 0;
     margin: 6px 0;
+
     > li {
       display: inline-block;
       font-size: 12px;
       color: #838383;
     }
   }
+
   > .topic_content {
     border-top: 1px solid #e5e5e5;
     padding: 0 10px;
     width: 100%;
+
     & /deep/ .markdown-text img {
       width: 92% !important;
     }
@@ -108,6 +122,7 @@ export default {
 
 #reply {
   margin-top: 15px;
+
   > .topbar {
     padding: 10px;
     background-color: #f6f6f6;
@@ -115,20 +130,24 @@ export default {
     font-size: 12px;
     margin-top: 10px;
   }
-  > .replySec{
-    border-bottom:1px solid #e5e5e5;
-    padding:0 10px;
+
+  > .replySec {
+    border-bottom: 1px solid #e5e5e5;
+    padding: 0 10px;
+
     > .replyUp a:nth-of-type(2) {
       margin-left: 0;
       display: inline-block;
     }
   }
+
   img {
     width: 30px;
     height: 30px;
     position: relative;
     bottom: -9px;
   }
+
   a, span {
     font-size: 13px;
     color: #666;
