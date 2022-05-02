@@ -2,17 +2,17 @@
   <div id="app">
     <TheHeader />
     <div class="container">
-      <ThePostList />
+      <router-view></router-view>
     </div>
   </div>
 </template>
 
 <script>
 import TheHeader from '@/components/TheHeader'
-import ThePostList from '@/components/ThePostList'
+
 export default {
   name: 'App',
-  components: { TheHeader, ThePostList }
+  components: { TheHeader }
 }
 </script>
 

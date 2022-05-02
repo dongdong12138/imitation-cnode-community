@@ -22,10 +22,13 @@
           <span class="allcount">
             <span class="reply_count">{{ topic.reply_count }}</span>/{{ topic.visit_count }}
           </span>
-          <span :class="{put_good: topic.good, put_top: topic.top, 'topiclist-tab': !topic.good && !topic.top}">
-            {{ topic | tabFormatter }}
-          </span>
-          <span>{{ topic.title }}</span>
+          <span :class="{put_good: topic.good, put_top: topic.top, 'topiclist-tab': !topic.good && !topic.top}">{{ topic | tabFormatter }}</span>
+          <router-link :to="{
+            name: 'article',
+            params: { id: topic.id }
+          }">
+            <span>{{ topic.title }}</span>
+          </router-link>
           <span class="last_reply">{{ topic.last_reply_at | formatDate }}</span>
         </li>
       </ul>
@@ -70,7 +73,10 @@ export default {
 a {
   text-decoration: none;
   color: black;
-  &:hover { text-decoration: underline; }
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .loading {
@@ -105,13 +111,17 @@ a {
     .toobar {
       height: 40px;
       background-color: #f5f5f5;
+
       span {
         font-size: 14px;
         color: #80bd01;
         line-height: 40px;
         margin: 0 10px;
         cursor: pointer;
-        &:hover { color: #9e78c0; }
+
+        &:hover {
+          color: #9e78c0;
+        }
       }
     }
 
