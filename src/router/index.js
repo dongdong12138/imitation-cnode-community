@@ -27,6 +27,10 @@ export default new VueRouter({
             name: 'userInfo',
             path: '/userInfo/:name',
             component: TheUserInfo
+        },
+        {
+            path: '*',
+            redirect: '/'
         }
     ]
 })
