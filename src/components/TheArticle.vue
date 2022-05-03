@@ -145,9 +145,16 @@ export default {
     border-bottom: 1px solid #e5e5e5;
     padding: 0 10px;
 
-    > .replyUp a:nth-of-type(2) {
-      margin-left: 0;
-      display: inline-block;
+    > .replyUp {
+      margin-bottom: 10px;
+      a:nth-of-type(2) {
+        margin: 0 8px;
+        display: inline-block;
+      }
+    }
+
+    > p {
+      margin-bottom: 10px;
     }
   }
 

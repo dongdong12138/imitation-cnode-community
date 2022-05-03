@@ -18,11 +18,14 @@ export default {
 </script>
 
 <style>
+* { margin: 0; padding: 0; }
 #app {
+  min-width: 1000px;
   background-color: #e1e1e1;
 }
 .container {
   width: 80%;
   margin: 0 auto;
+  padding-bottom: 20px;
 }
 </style>

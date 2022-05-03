@@ -23,7 +23,7 @@
             <span class="reply_count">{{ topic.reply_count }}</span>/{{ topic.visit_count }}
           </span>
           <span :class="{put_good: topic.good, put_top: topic.top, 'topiclist-tab': !topic.good && !topic.top}">
-            {{topic | tabFormatter }}
+            {{ topic | tabFormatter }}
           </span>
           <router-link :to="{
             name: 'article',
@@ -37,7 +37,7 @@
     </div>
 
     <!--<ThePagination />-->
-    <div class="pagination-container">
+    <div v-if="!isLoading" class="pagination-container">
       <el-pagination
           :pager-count="5"
           :total="1000"
@@ -73,7 +73,7 @@ export default {
     /**
      * 查询主题首页
      */
-    async reqTopics(page=1) {
+    async reqTopics(page = 1) {
       try {
         const result = await axios.get('https://cnodejs.org/api/v1/topics', { params: { page, limit: 20 } })
         // console.log('reqTopics:', result)
@@ -211,13 +211,15 @@ a {
 
 
 .pagination-container {
+  width: 100%;
+  max-width: 1344px;
   box-sizing: border-box;
   height: 60px;
   background-color: #fff;
   border: 1px solid #888888;
   border-radius: 5px;
   padding: 6px 20px;
-  margin: 0 0 20px;
+  margin: 10px auto 0;
   display: flex;
   align-items: center;
 
@@ -233,12 +235,19 @@ a {
       margin: 0 4px;
       width: 55px;
       height: 29px;
+
       &.number.active {
         color: white;
         background-color: #1f1b1b;
-        &:hover { color: #fff; }
+
+        &:hover {
+          color: #fff;
+        }
       }
-      &:not(.disabled):hover { color: #1f1b1b; }
+
+      &:not(.disabled):hover {
+        color: #1f1b1b;
+      }
     }
   }
 }
