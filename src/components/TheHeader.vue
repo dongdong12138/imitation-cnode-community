@@ -1,6 +1,8 @@
 <template>
   <header>
-    <img src="../assets/cnodejs_light.svg" alt="logo">
+    <router-link :to="{ name: 'postList' }">
+      <img src="../assets/cnodejs_light.svg" alt="logo">
+    </router-link>
     <ul>
       <li><a href="#">首页</a></li>
       <li><a href="#">新手入门</a></li>
@@ -23,7 +25,7 @@ header {
   background-color: #5a5555;
   height: 50px;
 
-  > img {
+  img {
     max-width: 120px;
     margin-left: 50px;
     margin-top: 10px;
@@ -33,9 +35,11 @@ header {
     list-style: none;
     float: right;
     margin: 4px;
+
     > li {
       display: inline-block;
       padding: 10px 15px;
+
       > a {
         text-decoration: none;
         color: #ccc;

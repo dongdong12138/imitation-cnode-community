@@ -71,7 +71,7 @@ export default {
     async reqTopicDetail(id) {
       try {
         const result = await axios.get(`https://cnodejs.org/api/v1/topic/${id}`)
-        console.log('reqTopicDetail:', result)
+        // console.log('reqTopicDetail:', result)
         this.article = result.data.data
       } catch (err) {
         console.log('reqTopicDetail err', err)

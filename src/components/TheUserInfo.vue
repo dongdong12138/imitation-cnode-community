@@ -67,7 +67,7 @@ export default {
     async reqUserInfo(name) {
       try {
         const result = await axios.get(`https://cnodejs.org/api/v1/user/${name}`)
-        console.log('reqUserInfo:', result)
+        // console.log('reqUserInfo:', result)
         this.userInfo = result.data.data
       } catch (err) {
         console.log('reqUserInfo err:', err)

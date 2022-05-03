@@ -76,7 +76,7 @@ export default {
     async reqTopics(page=1) {
       try {
         const result = await axios.get('https://cnodejs.org/api/v1/topics', { params: { page, limit: 20 } })
-        console.log('reqTopics:', result)
+        // console.log('reqTopics:', result)
         this.topicArr = result.data.data
       } catch (err) {
         console.log('reqTopics err:', err)

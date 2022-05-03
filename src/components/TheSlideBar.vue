@@ -58,7 +58,7 @@ export default {
       if (!this.userInfo) return
       const { recent_topics } = this.userInfo
       if (recent_topics) {
-        console.log('recent_topics:', recent_topics)
+        // console.log('recent_topics:', recent_topics)
         return recent_topics.slice(0, 5)
       } else {
         return []
@@ -82,7 +82,7 @@ export default {
     async reqUserInfo(name) {
       try {
         const result = await axios.get(`https://cnodejs.org/api/v1/user/${name}`)
-        console.log('reqUserInfo:', result)
+        // console.log('reqUserInfo:', result)
         this.userInfo = result.data.data
       } catch (err) {
         console.log('reqUserInfo err:', err)
