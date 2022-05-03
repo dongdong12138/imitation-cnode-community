@@ -22,7 +22,9 @@
           <span class="allcount">
             <span class="reply_count">{{ topic.reply_count }}</span>/{{ topic.visit_count }}
           </span>
-          <span :class="{put_good: topic.good, put_top: topic.top, 'topiclist-tab': !topic.good && !topic.top}">{{ topic | tabFormatter }}</span>
+          <span :class="{put_good: topic.good, put_top: topic.top, 'topiclist-tab': !topic.good && !topic.top}">
+            {{topic | tabFormatter }}
+          </span>
           <router-link :to="{
             name: 'article',
             params: { id: topic.id, name: topic.author.loginname }
@@ -32,6 +34,21 @@
           <span class="last_reply">{{ topic.last_reply_at | formatDate }}</span>
         </li>
       </ul>
+    </div>
+
+    <!--<ThePagination />-->
+    <div class="pagination-container">
+      <el-pagination
+          :pager-count="5"
+          :total="1000"
+          prev-text="上一页"
+          next-text="下一页"
+          background
+          layout="prev, pager, next"
+          @current-change="currentChange"
+          @prev-click="prevClick"
+          @next-click="nextClick"
+      ></el-pagination>
     </div>
 
   </main>
@@ -56,14 +73,23 @@ export default {
     /**
      * 查询主题首页
      */
-    async reqTopics() {
+    async reqTopics(page=1) {
       try {
-        const result = await axios.get('https://cnodejs.org/api/v1/topics', { params: { page: 1, limit: 20 } })
+        const result = await axios.get('https://cnodejs.org/api/v1/topics', { params: { page, limit: 20 } })
         console.log('reqTopics:', result)
         this.topicArr = result.data.data
       } catch (err) {
         console.log('reqTopics err:', err)
       }
+    },
+    currentChange(page) {
+      this.reqTopics(page)
+    },
+    prevClick(page) {
+      this.reqTopics(page)
+    },
+    nextClick(page) {
+      this.reqTopics(page)
     }
   }
 }
@@ -179,6 +205,40 @@ a {
       float: right;
       color: #778087;
       font-size: 12px;
+    }
+  }
+}
+
+
+.pagination-container {
+  box-sizing: border-box;
+  height: 60px;
+  background-color: #fff;
+  border: 1px solid #888888;
+  border-radius: 5px;
+  padding: 6px 20px;
+  margin: 0 0 20px;
+  display: flex;
+  align-items: center;
+
+  /deep/ .el-pagination.is-background {
+    button, li {
+      color: #778087;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 3px;
+      outline: none;
+      cursor: pointer;
+      padding: 0 2px;
+      margin: 0 4px;
+      width: 55px;
+      height: 29px;
+      &.number.active {
+        color: white;
+        background-color: #1f1b1b;
+        &:hover { color: #fff; }
+      }
+      &:not(.disabled):hover { color: #1f1b1b; }
     }
   }
 }
