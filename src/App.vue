@@ -2,6 +2,7 @@
   <div id="app">
     <TheHeader />
     <div class="container">
+      <router-view name="slideBar"></router-view>
       <router-view></router-view>
     </div>
   </div>

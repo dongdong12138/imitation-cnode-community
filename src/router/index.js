@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 import TheArticle from '@/components/TheArticle'
 import ThePostList from '@/components/ThePostList'
 import TheUserInfo from '@/components/TheUserInfo'
+import TheSlideBar from '@/components/TheSlideBar'
 
 Vue.use(VueRouter)
 
@@ -16,8 +17,11 @@ export default new VueRouter({
         },
         {
             name: 'article',
-            path: '/article/:id',
-            component: TheArticle
+            path: '/article/:id/:name',
+            components: {
+                default: TheArticle,
+                slideBar: TheSlideBar
+            }
         },
         {
             name: 'userInfo',

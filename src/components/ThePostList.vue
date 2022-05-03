@@ -25,7 +25,7 @@
           <span :class="{put_good: topic.good, put_top: topic.top, 'topiclist-tab': !topic.good && !topic.top}">{{ topic | tabFormatter }}</span>
           <router-link :to="{
             name: 'article',
-            params: { id: topic.id }
+            params: { id: topic.id, name: topic.author.loginname }
           }">
             <span>{{ topic.title }}</span>
           </router-link>

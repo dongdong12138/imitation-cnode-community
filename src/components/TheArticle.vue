@@ -62,6 +62,11 @@ export default {
     await this.reqTopicDetail(id)
     this.isLoading = false
   },
+  watch: {
+    '$route'(newValue) {
+      this.reqTopicDetail(newValue.params.id)
+    }
+  },
   methods: {
     async reqTopicDetail(id) {
       try {
@@ -78,6 +83,11 @@ export default {
 
 <style scoped lang="less">
 @import "../assets/markdown-github.css";
+
+.article {
+  margin-right: 340px;
+  margin-top: 15px;
+}
 
 .loading {
   text-align: center;

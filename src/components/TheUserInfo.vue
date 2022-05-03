@@ -20,7 +20,7 @@
           <li v-for="item in userInfo.recent_replies" :key="item.id">
             <router-link :to="{
               name: 'article',
-              params: { id: item.id }
+              params: { id: item.id, name: item.author.loginname }
             }">
               {{ item.title }}
             </router-link>
@@ -34,7 +34,7 @@
           <li v-for="item in userInfo.recent_topics" :key="item.id">
             <router-link :to="{
               name: 'article',
-              params: { id: item.id }
+              params: { id: item.id, name: item.author.loginname }
             }">
               {{ item.title }}
             </router-link>
